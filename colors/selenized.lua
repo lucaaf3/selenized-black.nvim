@@ -4,17 +4,17 @@
 -- see: https://github.com/jan-warchol/selenized
 -- with updated values from https://github.com/jan-warchol/selenized/blob/9efeaac1b95a151d5ada36f17f7c4d5c8c3f0741/the-values.md
 
-_G.selenized-black = _G.selenized-black or {}
+_G.selenized = _G.selenized or {}
 
 local cmd = vim.cmd
 local g = vim.g
 local fn = vim.fn
 
-local background = vim.o.background or 'black'
+local background = vim.o.background or 'dark'
 
 local none = 'none'
 local colors = {
-    black = {
+    dark = {
         bg_0       = '#181818',
         bg_1       = '#252525',
         bg_2       = '#3b3b3b',
@@ -40,7 +40,7 @@ local colors = {
         br_orange  = '#fa9153',
         br_violet  = '#b891f5',
     },
-    white = {
+    light = {
         bg_0       = '#ffffff',
         bg_1       = '#ebebeb',
         bg_2       = '#cdcdcd',
@@ -68,8 +68,8 @@ local colors = {
         deep_dark  = '#181818',
     }
 }
-_G.selenized-black.color_scheme = colors
-_G.selenized-black.colors = colors[background]
+_G.selenized.color_scheme = colors
+_G.selenized.colors = colors[background]
 
 local highlight = function(group, hi)
     hi = hi or {}
@@ -102,7 +102,7 @@ local highlights = function(colors)
         cmd.syntax('reset')
     end
 
-    g.colors_name                  = 'selenized-black'
+    g.colors_name                  = 'selenized'
 
     g.terminal_color_0             = colors.bg_1
     g.terminal_color_1             = colors.red
@@ -289,6 +289,6 @@ local highlights = function(colors)
     for group, highlights in pairs(hi) do
         highlight(group, highlights)
     end
-    _G.selenized-black.colors = colors
+    _G.selenized.colors = colors
 end
 highlights(colors[background])
